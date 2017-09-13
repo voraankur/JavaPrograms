@@ -10,13 +10,15 @@ public class LinkedListImplementation {
 		ll.insertElement(6);
 		ll.insertElement(10);
 		System.out.println("After insert");
-		ll.printLinkList();
-		
+		ll.printList(ll.head);;
+		//Node head = ll.getHead();
+		Node head = ll.reverseList(ll.head);
+	
 		//ll.deleteElement(10);
 		//ll.deleteElement(6);
-		ll.deleteElement(5);
-		System.out.println("After Delete");
-		ll.printLinkList();
+		//ll.deleteElement(5);
+		System.out.println("After reverse");
+		ll.printList(head);
 	}
 
 }
@@ -26,7 +28,7 @@ class Node {
 	public Node next;
 	
 	public void displayNode() {
-		System.out.println("{" + data + "}");
+		System.out.print(" {" + data + "} ");
 	}
 	
 	public Node(int data) {
@@ -36,13 +38,19 @@ class Node {
 }
 
 class LinkList{
-	private Node head;
+	public Node head;
 	
 	public void insertElement(int ele) {
 		Node newNode = new Node(ele);
 		newNode.next = head;
 		head = newNode;
 	}
+	
+	public Node getHead() {
+		Node temp = head;
+		return head;
+	}
+	
 	
 	public void deleteElement(int ele){
 		Node temp = head;
@@ -66,6 +74,20 @@ class LinkList{
 		System.out.println("After deleting the node");
 	}
 	
+	public Node reverseList(Node head) {
+		Node current = head;
+		Node next = null;
+		Node previous = null;
+		while(current!=null) {
+			next = current.next;
+			current.next = previous;
+			previous = current;
+			current = next;
+		}
+		head = previous;
+		return head;
+	}
+	
 	public void printLinkList(){
 		Node current = head;
 		while(current!=null) {
@@ -73,4 +95,12 @@ class LinkList{
 			current = current.next;
 		}
 	}
+	
+	void printList(Node node) {
+		Node current = node;
+        while (current != null) {
+        	current.displayNode();
+            current = current.next;
+        }
+    }
 }
