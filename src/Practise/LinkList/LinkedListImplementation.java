@@ -9,6 +9,7 @@ public class LinkedListImplementation {
 		ll.insertElement(5);
 		ll.insertElement(6);
 		ll.insertElement(10);
+		ll.insertElement(20);
 		System.out.println("After insert");
 		ll.printList(ll.head);;
 		//Node head = ll.getHead();
